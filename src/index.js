@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import Grid from './pages/Grid';
+import {Provider} from 'react-redux'
+
+import reducer from './state/rootReducer'
+import createStore from './state/createStore'
+import App from './pages/App';
+// import AddVolumes from './pages/AddVolumes';
+
+const store = createStore(reducer)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    {/* <Grid/> */}
+   <App/>
+  </Provider>,
   document.getElementById('root')
 );
 

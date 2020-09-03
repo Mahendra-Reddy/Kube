@@ -1,5 +1,5 @@
 import React from "react";
-import InputField from "./components/input/InputField";
+import InputField from "../components/input/InputField";
 import {
   Select,
   FormControl,
@@ -8,7 +8,10 @@ import {
   Switch,
   Paper,
 } from "@material-ui/core";
-const App = () => {
+ import AddVolumes from "./AddVolumes";
+import { reduxForm } from "redux-form";
+const FORM_NAME = 'notebookServerForm'
+const App = () => { 
   return (
     <div style={{ margin: "5%" }}>
       <form>
@@ -116,9 +119,7 @@ const App = () => {
               <div>
                 <h2>Data Volumes</h2>
                 <p>Configure the Volumes to be mounted as your Datasets</p>
-                <Button variant="outlined" color="primary">
-                  ADD VOLUME
-                </Button>
+                <AddVolumes />
               </div>
               <div>
                 <h2>Configurations</h2>
@@ -216,4 +217,6 @@ const App = () => {
   );
 };
 
-export default App;
+export default reduxForm({
+  form:FORM_NAME
+})(App);
